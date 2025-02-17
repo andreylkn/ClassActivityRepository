@@ -9,9 +9,13 @@ def print_menu():
     print("5. Factorial")
     print("6. Power Calculation")
     print("7. Is a prime number")
-    print("8. Exit")
+    print("8. Numbers")
+    print("9. Exit")
 
 def print_invalid_choice():
+    print("Invalid choice. Please try again.")
+
+def print_invalid_count_of_numbers():
     print("Invalid choice. Please try again.")
 
 def input_two_numbers():
@@ -21,6 +25,11 @@ def input_two_numbers():
 
 def input_one_number():
     return int(input("Input a number: "))
+
+def input_numbers():
+    numbers = input("Input numbers: ")
+    numbers = numbers.split(",")
+    return numbers
 
 def main():
     while True:
@@ -48,6 +57,15 @@ def main():
             a, b = input_two_numbers()
             print(power(a, b))
         elif choice == '8':
+            numbers = input_numbers()
+            if len(numbers) == 1:
+                print(factorial(int(numbers[0])))
+            elif len(numbers) == 2:
+                print(power(int(numbers[0]), int(numbers[1])))
+            else:
+                print_invalid_count_of_numbers()
+
+        elif choice == '9':
             print("Goodbye!")
             break
         else:
