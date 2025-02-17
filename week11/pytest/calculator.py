@@ -1,0 +1,57 @@
+from week11.pytest.mypackage.calculator_API import add, subtract, divide, is_prime, factorial, power, multiply
+
+def print_menu():
+    print("\n========= Calculator =========")
+    print("1. Addition (A + B)")
+    print("2. Subtraction (A - B)")
+    print("3. Multiplication (A * B)")
+    print("4. Division (A / B)")
+    print("5. Factorial")
+    print("6. Power Calculation")
+    print("7. Is a prime number")
+    print("8. Exit")
+
+def print_invalid_choice():
+    print("Invalid choice. Please try again.")
+
+def input_two_numbers():
+    a = int(input("Input A: "))
+    b = int(input("Input B: "))
+    return a, b
+
+def input_one_number():
+    return int(input("Input a number: "))
+
+def main():
+    while True:
+        print_menu()
+        choice = input("Choose an option: ").strip()
+        if choice == '1':
+            a, b = input_two_numbers()
+            print(add(a, b))
+        elif choice == '2':
+            a, b = input_two_numbers()
+            print(subtract(a, b))
+        elif choice == '3':
+            a, b = input_two_numbers()
+            print(multiply(a, b))
+        elif choice == '4':
+            a, b = input_two_numbers()
+            print(divide(a, b))
+        elif choice == '5':
+            a = input_one_number()
+            print(factorial(a))
+        elif choice == '6':
+            a = input_one_number()
+            print(is_prime(a))
+        elif choice == '7':
+            a, b = input_two_numbers()
+            print(power(a, b))
+        elif choice == '8':
+            print("Goodbye!")
+            break
+        else:
+            print_invalid_choice()
+
+if __name__ == "__main__":
+    main()
