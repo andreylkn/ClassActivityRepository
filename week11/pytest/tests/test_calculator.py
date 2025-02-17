@@ -17,11 +17,25 @@ def test_divide_by_zero():
     with pytest.raises(ValueError, match="Cannot divide by zero"):
         divide(10, 0)
 
-def test_factorial():
-    assert factorial(6) == 720
+@pytest.mark.parametrize("value, expected_result", [
+    (2, 2),
+    (4, 24),
+    (6, 720),
+])
+def test_factorial(value, expected_result):
+    assert factorial(value) == expected_result
 
-def test_power():
-    assert power(2,6) == 64
+@pytest.mark.parametrize("base, exponent, expected_result", [
+    (2, 6, 64),
+    (3, 5, 243),
+])
+def test_power(base, exponent, expected_result):
+    assert power(base,exponent) == expected_result
 
-def test_is_prime():
-    assert is_prime(7)
+@pytest.mark.parametrize("value, expected_result", [
+    (3, True),
+    (31, True),
+    (20, False)
+])
+def test_is_prime(value, expected_result):
+    assert is_prime(value) == expected_result
