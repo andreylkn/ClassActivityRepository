@@ -3,7 +3,7 @@ import unittest
 from week11.calculator.classes.advance_calculator import AdvanceCalculator
 from week11.calculator.classes.simple_calculator import SimpleCalculator
 
-class TestMathOperations(unittest.TestCase):
+class TestMathOperationsOfSimpleCalculator(unittest.TestCase):
     def test_add(self):
         c = SimpleCalculator()
         self.assertEqual(c.add(2, 3), 5)
@@ -24,6 +24,7 @@ class TestMathOperations(unittest.TestCase):
         self.assertEqual(c.divide(8, 2), 4)
         self.assertEqual(c.divide(6, 3), 2)
 
+class TestMathOperationsOfAdvanceCalculator(unittest.TestCase):
     def test_factorial(self):
         c = AdvanceCalculator()
         self.assertEqual(c.factorial(2), 2)
