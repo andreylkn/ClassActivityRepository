@@ -3,7 +3,7 @@ from flask import Flask, request, render_template
 app = Flask(__name__)
 
 @app.route('/page_2/<name>')
-def upload_file(name):
+def print_hellow(name):
     return f"<p>Hello {name}, world!</p>"
 
 customers =  [
@@ -11,7 +11,7 @@ customers =  [
                 {'name': 'David', 'email': 'devid@gmail.com', 'note': 'adsfafasfas a asfa sf a'}
             ]
 @app.route('/info', methods=['GET', 'POST'])
-def display():
+def form_data_processing():
     if request.method == 'POST':
         name = request.form.get('name')
         email = request.form.get('email')
