@@ -1,3 +1,9 @@
-document.getElementById('alertBtn').addEventListener('click', function() {
-    alert('Hello from JavaScript!');
-});
+(function() {
+    document.getElementById('alertBtn').addEventListener('click', function() {
+        alert('Hello from JavaScript!');
+    });
+
+
+
+
+})();

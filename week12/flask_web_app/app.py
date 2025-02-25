@@ -1,14 +1,27 @@
-from flask import Flask, render_template
+from flask import Flask, request, render_template
 
 app = Flask(__name__)
 
+@app.route('/page_2/<name>')
+def upload_file(name):
+    return f"<p>Hello {name}, world!</p>"
+
+customers =  [
+                {'name': 'Andrew', 'email': 'andrew@gmail.com', 'note': 'w erwe rwasdas  asd er' },
+                {'name': 'David', 'email': 'devid@gmail.com', 'note': 'adsfafasfas a asfa sf a'}
+            ]
+@app.route('/info', methods=['GET', 'POST'])
+def display():
+    if request.method == 'POST':
+        name = request.form.get('name')
+        email = request.form.get('email')
+        note = request.form.get('note')
+        customers.append({'name': name, 'email': email, 'note': note})
+        return render_template("index.html", customers=customers)
+
 @app.route('/')
 def home():
-    return render_template('index.html')
-
-@app.route('/page_2')
-def vmd_timestamp():
-    return render_template('page_2.html')
+    return render_template('index.html', customers=customers)
 
 if __name__ == '__main__':
     app.run(debug=True)

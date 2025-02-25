@@ -2,16 +2,66 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Flask Web App</title>
+    <title style="font-family: 'Arial'">Flask Web App</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/week12/flask_web_app/styles/style.css" rel="stylesheet">
+    <style>
+        .customers-info > .row > .col {
+            background-color: var("--bs-primary-rgb");
+        }
+    </style>
 </head>
 <body>
     <h1>Welcome to Flask!</h1>
-    <button id="alertBtn" type="button" class="btn btn-primary">Click Me</button>
+    <form method=post action="/info" enctype=multipart/form-data class="card m-5 p-5 w-25">
+        <div class="mb-3">
+          <label for="nameFormInput" class="form-label">Name</label>
+          <input type="text" class="form-control" name="name" id="nameFormInput" placeholder="Input name...">
+        </div>
+        <div class="mb-3">
+          <label for="emailFormInput" class="form-label">Email address</label>
+          <input type="email" class="form-control" name="email"  id="emailFormInput" placeholder="name@example.com">
+        </div>
+        <div class="mb-3">
+          <label for="noteFormNote" class="form-label">Note</label>
+          <textarea class="form-control" name="note" id="noteFormNote" rows="3"></textarea>
+        </div>
+        <input type=submit value=Submit class="btn btn-primary">
+    </form>
+    <div class="card m-5 p-5 w-50 customers-info">
+        <div class="row">
+            <div class="col bg-primary-subtle">
+              Name
+            </div>
+            <div class="col bg-primary-subtle">
+              Email
+            </div>
+            <div class="col col-lg-5 bg-primary-subtle">
+              Note
+            </div>
+        </div>
+        {% for customer in customers %}
+        <div class="row">
+            <div class="col">
+              {{ customer['name'] }}
+            </div>
+            <div class="col">
+              {{ customer['email'] }}
+            </div>
+            <div class="col">
+              {{ customer['note'] }}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
 
+    <br/>
+    <br/>
+    <div class="container m-5">
+        <input id="inputButton">Test</input>
 
-    <a href=page_2 ><button type="button" class="btn btn-primary">Go to the next page</button></a>
-
+        <a href="/page_2/Andrew" ><button type="button" class="btn btn-primary">Go to the next page</button></a>
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="/static/script.js"></script>
 </body>
